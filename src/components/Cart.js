@@ -19,7 +19,7 @@ const getCartSummary = (cart) => {
   const cartSum = [];
 
   cartCopy.forEach((item) => {
-    let itemId = cartSum.findIndex((itemSum) => itemSum.name === item.name);
+    let itemId = cartSum.findIndex((itemSum) => itemSum.title === item.title);
     if (itemId === -1) {
       cartSum.push({
         ...item,
@@ -37,12 +37,12 @@ const getCartSummary = (cart) => {
 const Cart = ({ cart }) => {
   return (
     <div className="cart">
-      <div>cart</div>
+      <div>Cart</div>
       <div className="cart-list">
         {getCartSummary(cart).map((item) => {
           return (
             <div key={uniqid()}>
-              {`${item.name} ${item.emoji}: ${formatCurrency(item.price)}`}
+              {`${item.title}: ${formatCurrency(item.price)}`}
               <button onClick={item.addItem}>add</button>
               <span>{item.quantity}</span>
               <button onClick={item.removeItem}>subtract</button>
