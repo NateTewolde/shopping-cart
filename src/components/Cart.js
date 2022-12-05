@@ -1,14 +1,17 @@
 import uniqid from "uniqid";
 
-const currencyOptions = {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
+const formatCurrency = (price) => {
+  const currencyOptions = {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  };
+  return price.toLocaleString(undefined, currencyOptions);
 };
 
 // Takes cart state and returns the total price formatted for currency
 const getTotal = (cart) => {
   const total = cart.reduce((totalCost, item) => totalCost + item.price, 0);
-  return total.toLocaleString(undefined, currencyOptions);
+  return formatCurrency(total);
 };
 
 const getCartSummary = (cart) => {
@@ -19,8 +22,7 @@ const getCartSummary = (cart) => {
     let itemId = cartSum.findIndex((itemSum) => itemSum.name === item.name);
     if (itemId === -1) {
       cartSum.push({
-        name: item.name,
-        price: item.price,
+        ...item,
         quantity: 1,
         sumPrice: item.price,
       });
@@ -37,23 +39,19 @@ const Cart = ({ cart }) => {
     <div className="cart">
       <div>cart</div>
       <div className="cart-list">
-        <div>Shopping Cart: {cart.length} total items.</div>
-        <div>Total: {getTotal(cart)}</div>
-
         {getCartSummary(cart).map((item) => {
           return (
             <div key={uniqid()}>
-              {"name: " +
-                item.name +
-                ", price: " +
-                item.price +
-                ", quantity: " +
-                item.quantity +
-                ", total: " +
-                item.sumPrice}
+              {`${item.name} ${item.emoji}: ${formatCurrency(item.price)}`}
+              <button onClick={item.addItem}>add</button>
+              <span>{item.quantity}</span>
+              <button onClick={item.removeItem}>subtract</button>
+              <span>{formatCurrency(item.sumPrice)}</span>
             </div>
           );
         })}
+        <div>Shopping Cart: {cart.length} total items.</div>
+        <div>Total: {getTotal(cart)}</div>
       </div>
     </div>
   );
