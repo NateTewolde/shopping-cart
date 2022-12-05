@@ -1,19 +1,9 @@
-const products = [
-  {
-    emoji: "🍦",
-    name: "ice cream",
-    price: 5,
-  },
-  {
-    emoji: "🍩",
-    name: "donuts",
-    price: 2.5,
-  },
-  {
-    emoji: "🍉",
-    name: "watermelon",
-    price: 4,
-  },
-];
+async function getProducts() {
+  const response = await fetch(`https://fakestoreapi.com/products`, {
+    mode: "cors",
+  });
 
-export default products;
+  return await response.json();
+}
+
+export { getProducts };
