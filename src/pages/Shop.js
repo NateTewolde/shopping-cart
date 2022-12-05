@@ -6,12 +6,6 @@ import ItemCard from "../components/ItemCard";
 import Cart from "../components/Cart";
 import products from "../data";
 
-/*
-1. Create Cart component and Product component. When + on product
-cart goes up and keeps track of whats in it. 
-/shop/cart
-*/
-
 // Reducer function to add and remove items from cart state
 function cartReducer(state, action) {
   switch (action.type) {
@@ -35,27 +29,22 @@ function cartReducer(state, action) {
 const Shop = () => {
   const [cart, setCart] = useReducer(cartReducer, []);
 
-  function add(product) {
+  const add = (product) => {
     setCart({ product, type: "add" });
-  }
+  };
 
-  function remove(product) {
+  const remove = (product) => {
     setCart({ product, type: "remove" });
-  }
+  };
 
   return (
     <div className="shop-wrapper">
       <Nav />
       <Cart cart={cart} />
       {products.map((product) => {
-        return (
-          <ItemCard
-            key={uniqid()}
-            product={product}
-            addItem={() => add(product)}
-            removeItem={() => remove(product)}
-          />
-        );
+        product.addItem = () => add(product);
+        product.removeItem = () => remove(product);
+        return <ItemCard key={uniqid()} product={product} />;
       })}
       <Footer />
     </div>
