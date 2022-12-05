@@ -1,10 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import uniqid from "uniqid";
 import Nav from "../components/NavBar";
 import Footer from "../components/Footer";
 import ItemCard from "../components/ItemCard";
 import Cart from "../components/Cart";
-import products from "../data";
+import { getProducts } from "../data";
 
 // Reducer function to add and remove items from cart state
 function cartReducer(state, action) {
@@ -13,7 +13,7 @@ function cartReducer(state, action) {
       return [...state, action.product];
     case "remove":
       const productIndex = state.findIndex(
-        (item) => item.name === action.product.name
+        (item) => item.title === action.product.title
       );
       if (productIndex < 0) {
         return state;
@@ -28,6 +28,12 @@ function cartReducer(state, action) {
 
 const Shop = () => {
   const [cart, setCart] = useReducer(cartReducer, []);
+  const [products, setProducts] = useState([]);
+
+  //Handles mounting asynchronous product data
+  useEffect(() => {
+    getProducts().then((productsArr) => setProducts(productsArr));
+  }, []);
 
   const add = (product) => {
     setCart({ product, type: "add" });
