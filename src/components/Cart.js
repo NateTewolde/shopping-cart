@@ -35,20 +35,44 @@ const getCartSummary = (cart) => {
 };
 
 const Cart = ({ cart }) => {
+  //Adjusts cart when quantity input field is changed
+  const handleInputQuantityChange = (e) => {
+    let itemCopy = cart.slice(0).find((item) => item.title === e.target.id);
+    removeAllFromCart(e.target.id);
+    for (let i = 0; i < e.target.value; i++) {
+      itemCopy.addItem();
+    }
+  };
+
+  const removeAllFromCart = (unwantedItem) => {
+    cart.forEach((item) => {
+      if (item.title === unwantedItem) {
+        item.removeItem();
+      }
+    });
+  };
+
   return (
     <div className="cart">
       <div className="cart-title">Cart</div>
       <div className="cart-list">
         {getCartSummary(cart).map((item) => {
           return (
-            <div key={uniqid()} className="cart-list-item">
+            <div className="cart-list-item" key={uniqid()}>
               <div className="cart-list-item-desc">
                 <div>{`${item.title}`}</div>
-                <div>{` ${formatCurrency(item.price)}`}</div>
+                <div>{`${formatCurrency(item.price)}`}</div>
               </div>
               <div className="cart-list-item-btns">
                 <button onClick={item.addItem}>+</button>
-                <span>{item.quantity}</span>
+                <span>
+                  <input
+                    type="text"
+                    defaultValue={item.quantity}
+                    onBlur={handleInputQuantityChange}
+                    id={item.title}
+                  ></input>
+                </span>
                 <button onClick={item.removeItem}>-</button>
               </div>
               <div className="cart-list-item-total">
