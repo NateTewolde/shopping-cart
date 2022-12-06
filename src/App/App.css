@@ -54,6 +54,11 @@ li {
   font-weight: 500;
 }
 
+input {
+  width: 2ch;
+  text-align: center;
+}
+
 .cart-list-item-btns button {
   padding: 4px 8px;
   font-size: 1.1rem;
