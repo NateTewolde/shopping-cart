@@ -9,8 +9,9 @@ const formatCurrency = (price) => {
 const ItemCard = ({ product, addItem, removeItem }) => {
   return (
     <div className="item-card">
-      <p>{`${product.title}: ${formatCurrency(product.price)}`}</p>
-      <div className="item-btns">
+      <div className="item-title">{`${product.title}`}</div>
+      <div className="item-price">${formatCurrency(product.price)}</div>
+      <div className="item-add-btn">
         <button onClick={product.addItem}>Add to Cart</button>
       </div>
     </div>
