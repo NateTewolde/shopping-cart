@@ -6,4 +6,4 @@ async function getProducts() {
   return await response.json();
 }
 
-export { getProducts };
+export default getProducts;
