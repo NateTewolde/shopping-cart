@@ -4,7 +4,7 @@ import Nav from "../components/NavBar";
 import Footer from "../components/Footer";
 import ItemCard from "../components/ItemCard";
 import Cart from "../components/Cart";
-import { getProducts } from "../data";
+import getProducts from "../data";
 
 // Reducer function to add and remove items from cart state
 function cartReducer(state, action) {
@@ -25,6 +25,11 @@ function cartReducer(state, action) {
       return state;
   }
 }
+
+/* 
+next steps: add input field for quantity amount, then add categories,
+then the ability to filter by rating and by price. 
+*/
 
 const Shop = () => {
   const [cart, setCart] = useReducer(cartReducer, []);
@@ -47,11 +52,13 @@ const Shop = () => {
     <div className="shop-wrapper">
       <Nav />
       <Cart cart={cart} />
-      {products.map((product) => {
-        product.addItem = () => add(product);
-        product.removeItem = () => remove(product);
-        return <ItemCard key={uniqid()} product={product} />;
-      })}
+      <div className="shop-items">
+        {products.map((product) => {
+          product.addItem = () => add(product);
+          product.removeItem = () => remove(product);
+          return <ItemCard key={uniqid()} product={product} />;
+        })}
+      </div>
       <Footer />
     </div>
   );
