@@ -37,21 +37,30 @@ const getCartSummary = (cart) => {
 const Cart = ({ cart }) => {
   return (
     <div className="cart">
-      <div>Cart</div>
+      <div className="cart-title">Cart</div>
       <div className="cart-list">
         {getCartSummary(cart).map((item) => {
           return (
-            <div key={uniqid()}>
-              {`${item.title}: ${formatCurrency(item.price)}`}
-              <button onClick={item.addItem}>add</button>
-              <span>{item.quantity}</span>
-              <button onClick={item.removeItem}>subtract</button>
-              <span>{formatCurrency(item.sumPrice)}</span>
+            <div key={uniqid()} className="cart-list-item">
+              <div className="cart-list-item-desc">
+                <div>{`${item.title}`}</div>
+                <div>{` ${formatCurrency(item.price)}`}</div>
+              </div>
+              <div className="cart-list-item-btns">
+                <button onClick={item.addItem}>+</button>
+                <span>{item.quantity}</span>
+                <button onClick={item.removeItem}>-</button>
+              </div>
+              <div className="cart-list-item-total">
+                {formatCurrency(item.sumPrice)}
+              </div>
             </div>
           );
         })}
-        <div>Shopping Cart: {cart.length} total items.</div>
-        <div>Total: {getTotal(cart)}</div>
+      </div>
+      <div className="cart-totals">
+        <div className="cart-items-total">Items: {cart.length}</div>
+        <div className="cart-sum-total">Total: {getTotal(cart)}</div>
       </div>
     </div>
   );
