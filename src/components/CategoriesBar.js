@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 const CategoriesBar = ({ categories }) => {
   return (
     <div>
       <ul>
         {categories.map((category) => {
           return (
-            <li>
-              <a href={`http://localhost:3000/${category}`}>{category}</a>
+            <li key={category}>
+              <Link to={`/shop/${category}`}>{category}</Link>
             </li>
           );
         })}
