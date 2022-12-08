@@ -6,7 +6,7 @@ const formatCurrency = (price) => {
   return price.toLocaleString(undefined, currencyOptions);
 };
 
-const ItemCard = ({ product, addItem, removeItem }) => {
+const ItemCard = ({ product }) => {
   return (
     <div className="item-card">
       <div className="item-title">{`${product.title}`}</div>
