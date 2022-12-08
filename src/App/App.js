@@ -46,17 +46,19 @@ const App = () => {
 
   //Handles mounting asynchronous product data
   useEffect(() => {
-    getAllProducts().then((productsArr) => setProducts(productsArr));
-    getAllCategories().then((categoriesArr) => setCategories(categoriesArr));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getAllProducts().then((productsArr) => {
+      productsArr.forEach((product) => {
+        product.addItem = () => add(product);
+        product.removeItem = () => remove(product);
+      });
+      setProducts(productsArr);
+    });
   }, []);
 
+  //Handles mounting asynchronous category data
   useEffect(() => {
-    products.forEach((product) => {
-      product.addItem = () => add(product);
-      product.removeItem = () => remove(product);
-    });
-  }, [products]);
+    getAllCategories().then((categoriesArr) => setCategories(categoriesArr));
+  }, []);
 
   const add = (product) => {
     setShopCart({ product, type: "add" });
