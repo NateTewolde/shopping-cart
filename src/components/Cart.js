@@ -32,7 +32,8 @@ const getCartSummary = (cart) => {
       cartSum[itemId].sumPrice += cartSum[itemId].price;
     }
   });
-  return cartSum;
+
+  return cartSum.sort((a, b) => (a.title > b.title ? 1 : -1));
 };
 
 const Cart = ({ shopCart }) => {
