@@ -7,7 +7,9 @@ const CategoriesBar = ({ categories }) => {
         {categories.map((category) => {
           return (
             <li key={category}>
-              <Link to={`/shop/${category}`}>{category}</Link>
+              <Link to={`/shop/${category.replace(/\s+/g, "-")}`}>
+                {category}
+              </Link>
             </li>
           );
         })}
