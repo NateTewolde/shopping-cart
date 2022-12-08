@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 
 const formatCurrency = (price) => {
@@ -34,7 +35,17 @@ const getCartSummary = (cart) => {
   return cartSum;
 };
 
-const Cart = ({ cart }) => {
+const Cart = ({ shopCart }) => {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    if (shopCart === undefined) {
+      setCart([]);
+    } else {
+      setCart(shopCart.slice(0));
+    }
+  }, [shopCart]);
+
   //Adjusts cart when quantity input field is changed
   const handleInputQuantityChange = (e) => {
     let itemCopy = cart.slice(0).find((item) => item.title === e.target.id);
