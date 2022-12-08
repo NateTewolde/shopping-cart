@@ -7,6 +7,7 @@ import About from "../pages/About";
 import Cart from "../components/Cart";
 import "./App.css";
 import NavBar from "../components/NavBar";
+import uniqid from "uniqid";
 
 // Reducer function to add and remove items from shopCart state
 function cartReducer(state, action) {
@@ -51,6 +52,7 @@ const App = () => {
         product.addItem = () => add(product);
         product.removeItem = () => remove(product);
       });
+
       setProducts(productsArr);
     });
   }, []);
@@ -79,7 +81,21 @@ const App = () => {
             path="/shop"
             element={<Shop products={products} categories={categories} />}
           />
-          <Route path="/shop/jewelery" element={<Home />} />
+          {categories.map((category) => {
+            return (
+              <Route
+                key={uniqid()}
+                path={`/shop/${category.replace(/\s+/g, "-")}`}
+                element={
+                  <Shop
+                    products={products}
+                    categories={categories}
+                    category={category}
+                  />
+                }
+              />
+            );
+          })}
 
           <Route path="/about" element={<About />} />
         </Routes>
