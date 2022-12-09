@@ -12,7 +12,14 @@ const getStars = (rate) => {
   let blankStars;
   const stars = [];
   for (let i = 0; i <= rate; i++) {
-    let extraGoldPercent = (Math.round((rate - i) * 10) / 10) * 100;
+    let extraGold = (Math.round((rate - i) * 10) / 10) * 100;
+    let extraGoldPercent;
+
+    if (extraGold === 0) {
+      extraGoldPercent = extraGold;
+    } else {
+      extraGoldPercent = Math.min(Math.max(parseInt(extraGold), 30), 75);
+    }
 
     if (rate - i < 1) {
       console.log(`extraGoldPercent: ${extraGoldPercent}`);
