@@ -123,3 +123,21 @@ input {
 .item-add-btn button {
   padding: 4px 8px;
 }
+
+.stars {
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: 0;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffd700 100%, #333030 0%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blank-stars {
+  background: #333030;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
