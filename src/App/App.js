@@ -5,9 +5,9 @@ import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import About from "../pages/About";
 import Cart from "../components/Cart";
-import "./App.css";
 import NavBar from "../components/NavBar";
 import uniqid from "uniqid";
+import "./App.css";
 
 // Reducer function to add and remove items from shopCart state
 function cartReducer(state, action) {
@@ -31,9 +31,9 @@ function cartReducer(state, action) {
 
 /* 
 next steps:  
-1. add categories with routers
-2. ability to filter by rating and by price
-3. product page when the image is clicked on
+1. ability to filter by rating and by price
+2. product page when the image is clicked on 
+    with more info like the desc
 
 last. style -> make home in nav a logo, make cart a dropdown, 
 add item quantity next to cart image,
