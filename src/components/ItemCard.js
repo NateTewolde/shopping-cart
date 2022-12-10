@@ -22,8 +22,6 @@ const getStars = (rate) => {
     }
 
     if (rate - i < 1) {
-      console.log(`extraGoldPercent: ${extraGoldPercent}`);
-
       blankStars = 4 - stars.length;
       let background;
       if (extraGoldPercent > 50) {
