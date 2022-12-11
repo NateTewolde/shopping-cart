@@ -1,4 +1,5 @@
 import { useState } from "react";
+import StarsRating from "../components/StarsRating";
 
 const ItemPage = ({ product }) => {
   const [itemQuantity, setItemQuantity] = useState(1);
@@ -22,6 +23,11 @@ const ItemPage = ({ product }) => {
         alt={product.description}
       />
       <div className="item-page-name">{product.title}</div>
+      <div className="item-page-rating">
+        <StarsRating rate={product.rating.rate} />
+        <div>{`(${product.rating.rate})`}</div>
+        <div className="item-page-rating-count">{`${product.rating.count} customer ratings`}</div>
+      </div>
       <div className="item-desc">{product.description}</div>
       <div className="item-page-add">
         <input
