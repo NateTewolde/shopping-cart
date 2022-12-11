@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import StarsRating from "./StarsRating";
 
 const formatCurrency = (price) => {
@@ -11,15 +12,30 @@ const formatCurrency = (price) => {
 const ItemCard = ({ product }) => {
   return (
     <div className="item-card">
-      <div className="item-title">{`${product.title}`}</div>
-      <div className="item-price">${formatCurrency(product.price)}</div>
-      <div className="item-add-btn">
+      <Link
+        to={`/shop/${product.category.replace(
+          /\s+/g,
+          "-"
+        )}/${product.title.replace(/\s+/g, "-")}`}
+      >
+        <img
+          className="item-img"
+          src={product.image}
+          alt={product.description}
+        />
+      </Link>
+      <div className="item-card-attributes">
+        <div className="item-title">{`${product.title}`}</div>
+        <div className="item-price">${formatCurrency(product.price)}</div>
         <div className="rating">
           <StarsRating rate={product.rating.rate} />
           <div>{`${product.rating.rate}`}</div>
           <div>{`${product.rating.count} customer ratings`}</div>
         </div>
-        <button onClick={product.addItem}>Add to Cart</button>
+
+        <div className="item-add-btn">
+          <button onClick={product.addItem}>Add to Cart</button>
+        </div>
       </div>
     </div>
   );
