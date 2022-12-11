@@ -37,7 +37,7 @@ const Shop = ({ products, categories, category }) => {
 
   const filterProducts = (e) => {
     setShopProducts(
-      getFilteredBy(products.slice(0), e.target.title, e.target.value)
+      getFilteredBy(shopProducts.slice(0), e.target.title, e.target.value)
     );
   };
 
