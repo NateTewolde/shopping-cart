@@ -151,6 +151,15 @@ li {
   -webkit-text-fill-color: transparent;
 }
 
+.item-card-rating {
+  display: flex;
+  align-items: center;
+}
+
+.item-card-rate {
+  font-size: 0.9rem;
+}
+
 /*Item Page*/
 .item-page-wrapper {
   display: flex;
@@ -160,4 +169,15 @@ li {
 
 .item-page-wrapper img {
   max-width: 400px;
+}
+
+.item-page-rating {
+  display: grid;
+  grid-template-columns: max-content min-content;
+  align-items: center;
+}
+
+.item-page-rating-count {
+  font-size: 0.9rem;
+  grid-column: span 2;
 }
