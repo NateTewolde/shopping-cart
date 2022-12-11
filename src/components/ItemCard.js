@@ -27,10 +27,9 @@ const ItemCard = ({ product }) => {
       <div className="item-card-attributes">
         <div className="item-title">{`${product.title}`}</div>
         <div className="item-price">${formatCurrency(product.price)}</div>
-        <div className="rating">
+        <div className="item-card-rating">
           <StarsRating rate={product.rating.rate} />
-          <div>{`${product.rating.rate}`}</div>
-          <div>{`${product.rating.count} customer ratings`}</div>
+          <div className="item-card-rate">{`(${product.rating.rate})`}</div>
         </div>
 
         <div className="item-add-btn">
