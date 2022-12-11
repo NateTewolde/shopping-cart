@@ -35,14 +35,16 @@ const Shop = ({ products, categories, category }) => {
     }
   }, [category, products]);
 
-  const filterProducts = (filter, direction) => {
-    setShopProducts(getFilteredBy(products.slice(0), filter, direction));
+  const filterProducts = (e) => {
+    setShopProducts(
+      getFilteredBy(products.slice(0), e.target.title, e.target.value)
+    );
   };
 
   return (
     <div className="shop-wrapper">
       <CategoriesBar categories={categories} />
-
+      <Filter filterProducts={(e) => filterProducts(e)} />
       <div className="shop-items">
         {shopProducts.map((product) => {
           return <ItemCard key={uniqid()} product={product} />;
