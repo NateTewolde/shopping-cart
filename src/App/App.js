@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { getAllProducts, getAllCategories } from "../data";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
+import ItemPage from "../pages/ItemPage";
 import About from "../pages/About";
 import Cart from "../components/Cart";
 import NavBar from "../components/NavBar";
@@ -93,6 +94,18 @@ const App = () => {
                     category={category}
                   />
                 }
+              />
+            );
+          })}
+          {products.map((product) => {
+            return (
+              <Route
+                key={uniqid()}
+                path={`/shop/${product.category.replace(
+                  /\s+/g,
+                  "-"
+                )}/${product.title.replace(/\s+/g, "-")}`}
+                element={<ItemPage product={product} />}
               />
             );
           })}
