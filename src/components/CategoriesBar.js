@@ -2,19 +2,17 @@ import { Link } from "react-router-dom";
 
 const CategoriesBar = ({ categories }) => {
   return (
-    <div>
-      <ul>
-        {categories.map((category) => {
-          return (
-            <li key={category}>
-              <Link to={`/shop/${category.replace(/\s+/g, "-")}`}>
-                {category}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul className="categories-bar">
+      {categories.map((category) => {
+        return (
+          <li key={category}>
+            <Link to={`/shop/${category.replace(/\s+/g, "-")}`}>
+              {category}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
