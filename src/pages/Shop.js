@@ -3,19 +3,19 @@ import uniqid from "uniqid";
 import CategoriesBar from "../components/CategoriesBar";
 import Footer from "../components/Footer";
 import ItemCard from "../components/ItemCard";
-import Filter from "../components/Filter";
+import SortBy from "../components/SortBy";
 
-const getFilteredBy = (products, filter, direction) => {
-  if (filter === "rate" && direction === "ascending") {
+const getSortedBy = (products, sort) => {
+  if (sort === "Rate (lower to higher)") {
     return products.sort((a, b) => (a.rating.rate > b.rating.rate ? 1 : -1));
   }
-  if (filter === "rate" && direction === "descending") {
+  if (sort === "Rate (higher to lower)") {
     return products.sort((a, b) => (a.rating.rate < b.rating.rate ? 1 : -1));
   }
-  if (filter === "price" && direction === "ascending") {
+  if (sort === "Price (lower to higher)") {
     return products.sort((a, b) => (a.price > b.price ? 1 : -1));
   }
-  if (filter === "price" && direction === "descending") {
+  if (sort === "Price (higher to lower)") {
     return products.sort((a, b) => (a.price < b.price ? 1 : -1));
   }
 };
@@ -35,16 +35,14 @@ const Shop = ({ products, categories, category }) => {
     }
   }, [category, products]);
 
-  const filterProducts = (e) => {
-    setShopProducts(
-      getFilteredBy(shopProducts.slice(0), e.target.title, e.target.value)
-    );
+  const sortProducts = (e) => {
+    setShopProducts(getSortedBy(shopProducts.slice(0), e.target.value));
   };
 
   return (
     <div className="shop-wrapper">
       <CategoriesBar categories={categories} />
-      <Filter filterProducts={(e) => filterProducts(e)} />
+      <SortBy sortProducts={(e) => sortProducts(e)} />
       <div className="shop-items">
         {shopProducts.map((product) => {
           return <ItemCard key={uniqid()} product={product} />;
