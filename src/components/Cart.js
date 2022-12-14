@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import shoppingBag from "../assets/images/shopping-bag.svg";
 import { motion, useCycle } from "framer-motion";
+import CartItem from "./CartItem";
 
 const formatCurrency = (price) => {
   const currencyOptions = {
@@ -51,6 +52,10 @@ const Cart = ({ shopCart }) => {
 
   //Adjusts cart when quantity input field is changed
   const handleInputQuantityChange = (e) => {
+    if (e.target.value < 0) {
+      e.target.value = 1;
+    }
+
     let itemCopy = cart.slice(0).find((item) => item.title === e.target.id);
     removeAllFromCart(e.target.id);
     for (let i = 0; i < e.target.value; i++) {
@@ -68,7 +73,7 @@ const Cart = ({ shopCart }) => {
 
   const sidebar = {
     open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 100% 40px)`,
+      clipPath: `circle(${height * 2 + 200}px at 95% 40px)`,
       transition: {
         type: "spring",
         stiffness: 20,
@@ -76,7 +81,7 @@ const Cart = ({ shopCart }) => {
       },
     }),
     closed: {
-      clipPath: "circle(30px at 100% 40px)",
+      clipPath: "circle(0px at 95% 40px)",
       transition: {
         delay: 0.5,
         type: "spring",
@@ -94,37 +99,22 @@ const Cart = ({ shopCart }) => {
       animate={isOpen ? "open" : "closed"}
     >
       <motion.div className="background cart-elements" variants={sidebar}>
+        <div className="cart-header">
+          <h1 className="cart-title">My Cart</h1>
+          <p className="cart-items-total">{`${cart.length} Items`}</p>
+        </div>
         <ul className="cart-list">
           {getCartSummary(cart).map((item) => {
             return (
-              <li className="cart-list-item" key={uniqid()}>
-                <div className="cart-list-item-desc">
-                  <div>{`${item.title}`}</div>
-                  <div>{`${formatCurrency(item.price)}`}</div>
-                </div>
-                <div className="cart-list-item-btns">
-                  <button onClick={item.addItem}>+</button>
-                  <span>
-                    <input
-                      type="text"
-                      defaultValue={item.quantity}
-                      onBlur={handleInputQuantityChange}
-                      id={item.title}
-                    ></input>
-                  </span>
-                  <button onClick={item.removeItem}>-</button>
-                </div>
-                <div className="cart-list-item-total">
-                  {formatCurrency(item.sumPrice)}
-                </div>
-              </li>
+              <CartItem
+                key={uniqid()}
+                item={item}
+                handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
+              />
             );
           })}
         </ul>
-        <div className="cart-totals">
-          <div className="cart-items-total">Items: {cart.length}</div>
-          <div className="cart-sum-total">Total: {getTotal(cart)}</div>
-        </div>
+        <div className="cart-sum-total">Total: {`$${getTotal(cart)}`}</div>
       </motion.div>
 
       <img
