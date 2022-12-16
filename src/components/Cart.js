@@ -1,8 +1,45 @@
+import * as React from "react";
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import shoppingBag from "../assets/images/shopping-bag.svg";
 import { motion, useCycle } from "framer-motion";
 import CartItem from "./CartItem";
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 95% 40px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(0px at 95% 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+const staggerItems = {
+  open: {
+    transition: {
+      delay: 5.0,
+      staggerChildren: 0.07,
+      delayChildren: 0.2,
+    },
+  },
+  closed: {
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
+};
 
 const formatCurrency = (price) => {
   const currencyOptions = {
@@ -71,25 +108,6 @@ const Cart = ({ shopCart }) => {
     });
   };
 
-  const sidebar = {
-    open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 95% 40px)`,
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 2,
-      },
-    }),
-    closed: {
-      clipPath: "circle(0px at 95% 40px)",
-      transition: {
-        delay: 0.5,
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-  };
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
@@ -103,26 +121,31 @@ const Cart = ({ shopCart }) => {
           <h1 className="cart-title">My Cart</h1>
           <p className="cart-items-total">{`${cart.length} Items`}</p>
         </div>
-        <ul className="cart-list">
-          {getCartSummary(cart).map((item) => {
-            return (
-              <CartItem
-                key={uniqid()}
-                item={item}
-                handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
-              />
-            );
-          })}
-        </ul>
+        <motion.ul
+          variants={staggerItems}
+          className="cart-list"
+          // eslint-disable-next-line react/jsx-no-duplicate-props
+          animate={isOpen ? "open" : "closed"}
+        >
+          {getCartSummary(cart).map((item) => (
+            <CartItem
+              key={uniqid()}
+              item={item}
+              handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
+            />
+          ))}
+        </motion.ul>
         <div className="cart-sum-total">Total: {`$${getTotal(cart)}`}</div>
       </motion.div>
 
-      <img
-        src={shoppingBag}
-        alt="shopping bag"
-        className="toggle-cart-btn"
-        onClick={() => toggleOpen()}
-      />
+      <div className="toggle-cart-container">
+        <img
+          src={shoppingBag}
+          alt="shopping bag"
+          onClick={() => toggleOpen()}
+        />
+        <div className="cart-counter">{getCartSummary(cart).length}</div>
+      </div>
     </motion.div>
   );
 };
