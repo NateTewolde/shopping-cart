@@ -25,22 +25,6 @@ const sidebar = {
   },
 };
 
-const staggerItems = {
-  open: {
-    transition: {
-      delay: 5.0,
-      staggerChildren: 0.07,
-      delayChildren: 0.2,
-    },
-  },
-  closed: {
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-    },
-  },
-};
-
 const formatCurrency = (price) => {
   const currencyOptions = {
     minimumFractionDigits: 2,
@@ -121,12 +105,7 @@ const Cart = ({ shopCart }) => {
           <h1 className="cart-title">My Cart</h1>
           <p className="cart-items-total">{`${cart.length} Items`}</p>
         </div>
-        <motion.ul
-          variants={staggerItems}
-          className="cart-list"
-          // eslint-disable-next-line react/jsx-no-duplicate-props
-          animate={isOpen ? "open" : "closed"}
-        >
+        <ul className="cart-list">
           {getCartSummary(cart).map((item) => (
             <CartItem
               key={uniqid()}
@@ -134,7 +113,7 @@ const Cart = ({ shopCart }) => {
               handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
             />
           ))}
-        </motion.ul>
+        </ul>
         <div className="cart-sum-total">Total: {`$${getTotal(cart)}`}</div>
       </motion.div>
 
