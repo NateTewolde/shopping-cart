@@ -250,13 +250,12 @@ header {
   align-items: center;
   justify-content: center;
   background: white;
-  min-height: 300px;
-  max-height: 100%;
+  height: 100%;
 }
 
 .item-card-img img {
-  max-width: 70%;
-  height: auto;
+  max-height: 80%;
+  max-width: 80%;
 }
 
 .item-title {
