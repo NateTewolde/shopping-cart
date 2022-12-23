@@ -72,10 +72,13 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div id="wrapper">
       <BrowserRouter>
-        <NavBar />
-        <Cart shopCart={shopCart} />
+        <header>
+          <NavBar />
+          <Cart shopCart={shopCart} />
+        </header>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
