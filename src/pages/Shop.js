@@ -40,7 +40,7 @@ const Shop = ({ products, categories, category }) => {
   };
 
   return (
-    <div className="shop-wrapper">
+    <div className="shop-wrapper content-wrapper">
       <CategoriesBar categories={categories} />
       <SortBy sortProducts={(e) => sortProducts(e)} />
       <div className="shop-items">
