@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import StarsRating from "./StarsRating";
+import itemPlusSign from "../assets/images/plus-circle.svg";
 
 const formatCurrency = (price) => {
   const currencyOptions = {
@@ -18,23 +19,22 @@ const ItemCard = ({ product }) => {
           "-"
         )}/${product.title.replace(/\s+/g, "-")}`}
       >
-        <img
-          className="item-img"
-          src={product.image}
-          alt={product.description}
-        />
+        <div className="item-card-img">
+          <img
+            className="item-img"
+            src={product.image}
+            alt={product.description}
+          />
+        </div>
       </Link>
       <div className="item-card-attributes">
         <div className="item-title">{`${product.title}`}</div>
-        <div className="item-price">${formatCurrency(product.price)}</div>
         <div className="item-card-rating">
           <StarsRating rate={product.rating.rate} />
           <div className="item-card-rate">{`(${product.rating.rate})`}</div>
         </div>
-
-        <div className="item-add-btn">
-          <button onClick={product.addItem}>Add to Cart</button>
-        </div>
+        <div className="item-price">${formatCurrency(product.price)}</div>
+        <img onClick={product.addItem} src={itemPlusSign} alt="Plus sign" />
       </div>
     </div>
   );
