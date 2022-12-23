@@ -1,35 +1,80 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;450;500;600;700;900&display=swap");
 
+@font-face {
+  font-family: speed-font;
+  src: url(../assets/fonts/speed-font.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
 }
 
-header ul,
-.categories-bar {
-  display: flex;
-  justify-content: space-around;
-  gap: 8px;
+html,
+body {
+  overflow-x: hidden;
 }
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  background-image: url(../assets/images/clothes-hanging.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  background: transparent;
+}
+
 li {
   list-style-type: none;
 }
 
-header a {
+a {
   text-decoration: none;
 }
 
-.home-logo {
-  width: 80px;
+a:visited {
+  color: inherit;
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #a855f7;
-  transform: translate(20%, -200%);
+header {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.5);
 }
+
+/*NavBar*/
+.navbar {
+  padding: 32px 8px;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  gap: 6px;
+}
+
+.home-logo {
+  font-family: speed-font, "Roboto", sans-serif;
+  font-size: 3rem;
+}
+
+.shop-wrapper {
+  padding-top: 150px;
+}
+
+/*Home*/
 
 /*Cart*/
 .cart {
@@ -90,8 +135,10 @@ header a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   border-bottom: 2px solid #808080;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .cart-list ul {
@@ -147,9 +194,9 @@ header a {
 
 .cart-list-item-total {
   grid-area: -2/3/-1/-1;
-  max-width: 4ch;
   font-weight: 450;
   align-self: end;
+  text-align: end;
 }
 
 .cart-sum-total {
@@ -162,6 +209,12 @@ header a {
 /*Shop*/
 .shop-wrapper {
   font-family: "Roboto", sans-serif;
+}
+
+.categories-bar {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
 }
 
 .shop-items {
