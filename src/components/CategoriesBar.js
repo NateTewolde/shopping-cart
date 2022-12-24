@@ -7,7 +7,10 @@ const CategoriesBar = ({ categories }) => {
         return (
           <li key={category}>
             <Link to={`/shop/${category.replace(/\s+/g, "-")}`}>
-              {category}
+              {category
+                .split(" ")
+                .map((word) => word[0].toUpperCase() + word.slice(1))
+                .join(" ")}
             </Link>
           </li>
         );
