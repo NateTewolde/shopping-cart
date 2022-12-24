@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
-import shoppingBag from "../assets/images/shopping-bag.svg";
+import shoppingCart from "../assets/images/shopping-cart.svg";
 import { motion, useCycle } from "framer-motion";
 import CartItem from "./CartItem";
 
@@ -119,8 +119,8 @@ const Cart = ({ shopCart }) => {
 
       <div className="toggle-cart-container">
         <img
-          src={shoppingBag}
-          alt="shopping bag"
+          src={shoppingCart}
+          alt="shopping cart"
           onClick={() => toggleOpen()}
         />
         <div className="cart-counter">{getCartSummary(cart).length}</div>
