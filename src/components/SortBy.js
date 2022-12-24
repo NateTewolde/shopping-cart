@@ -1,22 +1,23 @@
+import uniqid from "uniqid";
+
 const SortBy = ({ sortProducts }) => {
+  const sortOptions = [
+    "none",
+    "Price (higher to lower)",
+    "Price (lower to higher)",
+    "Rate (higher to lower)",
+    "Rate (lower to higher)",
+  ];
+
   return (
     <div className="sort">
       <label htmlFor="sort-options">Sort by: </label>
-
       <select id="sort-options" name="sort-options" onChange={sortProducts}>
-        <option className="sort-option" value="none"></option>
-        <option className="sort-option" value="Price (higher to lower)">
-          Price (higher to lower)
-        </option>
-        <option className="sort-option" value="Price (lower to higher)">
-          Price (lower to higher)
-        </option>
-        <option className="sort-option" value="Rate (higher to lower)">
-          Rate (higher to lower)
-        </option>
-        <option className="sort-option" value="Rate (lower to higher)">
-          Rate (lower to higher)
-        </option>
+        {sortOptions.map((sortOption) => (
+          <option className="sort-option" value={sortOption} key={uniqid()}>
+            {sortOption}
+          </option>
+        ))}
       </select>
     </div>
   );
