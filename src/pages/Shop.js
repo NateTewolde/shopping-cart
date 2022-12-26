@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import uniqid from "uniqid";
 import CategoriesBar from "../components/CategoriesBar";
-import Footer from "../components/Footer";
 import ItemCard from "../components/ItemCard";
 import SortBy from "../components/SortBy";
 
@@ -57,7 +56,6 @@ const Shop = ({ products, categories, category }) => {
           return <ItemCard key={uniqid()} product={product} />;
         })}
       </div>
-      <Footer />
     </div>
   );
 };
