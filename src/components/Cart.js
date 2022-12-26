@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 95% 40px)`,
+    clipPath: `circle(${height * 2 + 200}px at calc(100% - 30px) 42px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -15,7 +15,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(0px at 95% 40px)",
+    clipPath: "circle(0px at calc(100% - 30px) 42px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -123,7 +123,9 @@ const Cart = ({ shopCart }) => {
           alt="shopping cart"
           onClick={() => toggleOpen()}
         />
-        <div className="cart-counter">{getCartSummary(cart).length}</div>
+        <div onClick={() => toggleOpen()} className="cart-counter">
+          {getCartSummary(cart).length}
+        </div>
       </div>
     </motion.div>
   );
