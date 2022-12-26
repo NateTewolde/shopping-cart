@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import uniqid from "uniqid";
 import CategoriesBar from "../components/CategoriesBar";
 import Footer from "../components/Footer";
@@ -27,15 +27,24 @@ const getCategoryItems = (products, category) => {
 const Shop = ({ products, categories, category }) => {
   const [shopProducts, setShopProducts] = useState([]);
 
-  useEffect(() => {
+  const categorizeProducts = useCallback(() => {
     if (category !== undefined) {
-      setShopProducts(getCategoryItems(products, category));
+      setShopProducts(getCategoryItems(products.slice(0), category));
     } else {
       setShopProducts(products.slice(0));
     }
   }, [category, products]);
 
+  useEffect(() => {
+    categorizeProducts();
+  }, [categorizeProducts, category, products]);
+
   const sortProducts = (e) => {
+    if (e.target.value === "") {
+      categorizeProducts();
+      return -1;
+    }
+
     setShopProducts(getSortedBy(shopProducts.slice(0), e.target.value));
   };
 
