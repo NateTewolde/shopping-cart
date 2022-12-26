@@ -7,6 +7,7 @@ import ItemPage from "../pages/ItemPage";
 import About from "../pages/About";
 import Cart from "../components/Cart";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import uniqid from "uniqid";
 import "./App.css";
 
@@ -115,6 +116,7 @@ const App = () => {
 
           <Route path="/about" element={<About />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
