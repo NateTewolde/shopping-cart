@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect, useReducer, useState } from "react";
-import { getAllProducts, getAllCategories } from "../data";
+import { getAllProducts, getAllCategories } from "./data";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import ItemPage from "../pages/ItemPage";
