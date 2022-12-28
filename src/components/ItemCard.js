@@ -14,7 +14,7 @@ const ItemCard = ({ product }) => {
   return (
     <div className="item-card">
       <Link
-        to={`/shop/${product.category.replace(
+        to={`/one-stop/shop/${product.category.replace(
           /\s+/g,
           "-"
         )}/${product.title.replace(/\s+/g, "-")}`}
@@ -28,7 +28,14 @@ const ItemCard = ({ product }) => {
         </div>
       </Link>
       <div className="item-card-attributes">
-        <div className="item-title">{`${product.title}`}</div>
+        <div className="item-title">
+          <Link
+            to={`/one-stop/shop/${product.category.replace(
+              /\s+/g,
+              "-"
+            )}/${product.title.replace(/\s+/g, "-")}`}
+          >{`${product.title}`}</Link>
+        </div>
         <div className="item-card-rating">
           <StarsRating rate={product.rating.rate} />
           <div className="item-card-rate">{`(${product.rating.rate})`}</div>

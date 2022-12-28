@@ -6,7 +6,7 @@ const CategoriesBar = ({ categories }) => {
       {categories.map((category) => {
         return (
           <li key={category}>
-            <Link to={`/shop/${category.replace(/\s+/g, "-")}`}>
+            <Link to={`/one-stop/shop/${category.replace(/\s+/g, "-")}`}>
               {category
                 .split(" ")
                 .map((word) => word[0].toUpperCase() + word.slice(1))
