@@ -100,7 +100,11 @@ const Cart = ({ shopCart }) => {
       initial={false}
       animate={isOpen ? "open" : "closed"}
     >
-      <motion.div className="background cart-elements" variants={sidebar}>
+      <div
+        onClick={() => toggleOpen()}
+        className={`cart-background ${isOpen}`}
+      ></div>
+      <motion.div className={"cart-elements"} variants={sidebar}>
         <div className="cart-header">
           <h1 className="cart-title">My Cart</h1>
           <p className="cart-items-total">{`${cart.length} Items`}</p>
