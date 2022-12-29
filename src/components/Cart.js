@@ -1,9 +1,8 @@
-import * as React from "react";
 import { useEffect, useState } from "react";
+import { LazyMotion, domAnimation, m, useCycle } from "framer-motion";
 import uniqid from "uniqid";
-import shoppingCart from "../assets/images/shopping-cart.svg";
-import { motion, useCycle } from "framer-motion";
 import CartItem from "./CartItem";
+import shoppingCart from "../assets/images/shopping-cart.svg";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -95,43 +94,49 @@ const Cart = ({ shopCart }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
-    <motion.div
-      className="cart"
-      initial={false}
-      animate={isOpen ? "open" : "closed"}
-    >
-      <div
-        onClick={() => toggleOpen()}
-        className={`cart-background ${isOpen}`}
-      ></div>
-      <motion.div className={"cart-elements"} variants={sidebar}>
-        <div className="cart-header">
-          <h1 className="cart-title">My Cart</h1>
-          <p className="cart-items-total">{`${cart.length} Items`}</p>
-        </div>
-        <ul className="cart-list">
-          {getCartSummary(cart).map((item) => (
-            <CartItem
-              key={uniqid()}
-              item={item}
-              handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
-            />
-          ))}
-        </ul>
-        <div className="cart-sum-total">Total: {`$${getTotal(cart)}`}</div>
-      </motion.div>
-
-      <div className="toggle-cart-container">
-        <img
-          src={shoppingCart}
-          alt="shopping cart"
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className="cart"
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+      >
+        <div
           onClick={() => toggleOpen()}
-        />
-        <div onClick={() => toggleOpen()} className="cart-counter">
-          {getCartSummary(cart).length}
-        </div>
-      </div>
-    </motion.div>
+          className={`cart-background ${isOpen}`}
+        ></div>
+        <m.div className={"cart-elements"} variants={sidebar}>
+          <div className="cart-header">
+            <h1 className="cart-title">My Cart</h1>
+            <p className="cart-items-total">{`${cart.length} Items`}</p>
+          </div>
+          <ul className="cart-list">
+            {getCartSummary(cart).map((item) => (
+              <CartItem
+                key={uniqid()}
+                item={item}
+                handleInputQuantityChange={(e) => handleInputQuantityChange(e)}
+              />
+            ))}
+          </ul>
+          <div className="cart-sum-total">Total: {`$${getTotal(cart)}`}</div>
+        </m.div>
+
+        <m.div
+          className="toggle-cart-container"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <img
+            src={shoppingCart}
+            alt="shopping cart"
+            onClick={() => toggleOpen()}
+          />
+          <div onClick={() => toggleOpen()} className="cart-counter">
+            {getCartSummary(cart).length}
+          </div>
+        </m.div>
+      </m.div>
+    </LazyMotion>
   );
 };
 
