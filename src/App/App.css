@@ -73,8 +73,8 @@ header {
 }
 
 .home-logo {
-  font-family: speed-font, "Roboto", sans-serif;
   font-size: 3rem;
+  font-weight: 300;
 }
 
 /*Home*/
