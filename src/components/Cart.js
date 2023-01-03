@@ -16,10 +16,27 @@ const sidebar = {
   closed: {
     clipPath: "circle(0px at calc(100% - 30px) 42px)",
     transition: {
-      delay: 0.5,
+      delay: 0.2,
       type: "spring",
       stiffness: 400,
       damping: 40,
+    },
+  },
+};
+
+const cartBackground = {
+  open: {
+    width: "calc(100%)",
+    transition: {
+      delay: 0.3,
+      ease: "circOut",
+    },
+  },
+  close: {
+    width: "0px",
+    transition: {
+      delay: 0.3,
+      ease: "circIn",
     },
   },
 };
@@ -100,10 +117,11 @@ const Cart = ({ shopCart }) => {
         initial={false}
         animate={isOpen ? "open" : "closed"}
       >
-        <div
+        <m.div
           onClick={() => toggleOpen()}
-          className={`cart-background ${isOpen}`}
-        ></div>
+          className={`cart-background`}
+          variants={cartBackground}
+        ></m.div>
         <m.div className={"cart-elements"} variants={sidebar}>
           <div className="cart-header">
             <h1 className="cart-title">My Cart</h1>
