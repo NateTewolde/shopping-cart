@@ -10,11 +10,6 @@
   padding: 0;
 }
 
-/*style:
-  - 
-
-*/
-
 html,
 body {
   overflow-x: hidden;
@@ -555,10 +550,6 @@ footer img {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
-  }
-
-  .cart-background.false {
     width: 0px;
   }
 
