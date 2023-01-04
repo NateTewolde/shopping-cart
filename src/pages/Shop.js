@@ -49,7 +49,7 @@ const Shop = ({ products, categories, category }) => {
 
   return (
     <div className="shop-wrapper content-wrapper">
-      <CategoriesBar categories={categories} />
+      <CategoriesBar categories={categories} currentCategory={category} />
       <SortBy sortProducts={(e) => sortProducts(e)} />
       <div className="shop-items">
         {shopProducts.map((product) => {
