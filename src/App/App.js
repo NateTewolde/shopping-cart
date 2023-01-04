@@ -4,7 +4,6 @@ import { getAllProducts, getAllCategories } from "./data";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import ItemPage from "../pages/ItemPage";
-import About from "../pages/About";
 import Cart from "../components/Cart";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -30,17 +29,6 @@ function cartReducer(state, action) {
       return state;
   }
 }
-
-/* 
-next steps:  
-1. ability to filter by rating and by price
-2. product page when the image is clicked on 
-    with more info like the desc
-
-last. style -> make home in nav a logo, make cart a dropdown, 
-add item quantity next to cart image,
-maybe add an error page when card checkout is clicked.
-*/
 
 const App = () => {
   const [shopCart, setShopCart] = useReducer(cartReducer, []);
@@ -113,8 +101,6 @@ const App = () => {
               />
             );
           })}
-
-          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </BrowserRouter>
