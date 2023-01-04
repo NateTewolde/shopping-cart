@@ -22,14 +22,14 @@ const ItemCard = ({ product }) => {
   const [hovered, toggleHovered] = useCycle(false, true);
 
   return (
-    <div className="item-card">
-      <Link
-        to={`/one-stop/shop/${product.category.replace(
-          /\s+/g,
-          "-"
-        )}/${product.title.replace(/\s+/g, "-")}`}
-      >
-        <LazyMotion features={domAnimation}>
+    <LazyMotion features={domAnimation}>
+      <div className="item-card">
+        <Link
+          to={`/one-stop/shop/${product.category.replace(
+            /\s+/g,
+            "-"
+          )}/${product.title.replace(/\s+/g, "-")}`}
+        >
           <m.div
             className="item-card-img"
             initial={false}
@@ -44,25 +44,33 @@ const ItemCard = ({ product }) => {
               variants={variants}
             />
           </m.div>
-        </LazyMotion>
-      </Link>
-      <div className="item-card-attributes">
-        <div className="item-title">
-          <Link
-            to={`/one-stop/shop/${product.category.replace(
-              /\s+/g,
-              "-"
-            )}/${product.title.replace(/\s+/g, "-")}`}
-          >{`${product.title}`}</Link>
+        </Link>
+        <div className="item-card-attributes">
+          <div className="item-title">
+            <Link
+              to={`/one-stop/shop/${product.category.replace(
+                /\s+/g,
+                "-"
+              )}/${product.title.replace(/\s+/g, "-")}`}
+            >{`${product.title}`}</Link>
+          </div>
+          <div className="item-card-rating">
+            <StarsRating rate={product.rating.rate} />
+            <div className="item-card-rate">{`(${product.rating.rate})`}</div>
+          </div>
+          <div className="item-price">${formatCurrency(product.price)}</div>
+          <m.img
+            onClick={product.addItem}
+            src={itemPlusSign}
+            alt="Plus sign"
+            initial={{ scale: 8 }}
+            animate={{ scale: 8 }}
+            whileHover={{ scale: 8.5 }}
+            whileTap={{ scale: 7.5 }}
+          />
         </div>
-        <div className="item-card-rating">
-          <StarsRating rate={product.rating.rate} />
-          <div className="item-card-rate">{`(${product.rating.rate})`}</div>
-        </div>
-        <div className="item-price">${formatCurrency(product.price)}</div>
-        <img onClick={product.addItem} src={itemPlusSign} alt="Plus sign" />
       </div>
-    </div>
+    </LazyMotion>
   );
 };
 
