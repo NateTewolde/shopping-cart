@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.725f574d.css",
-    "main.js": "/shopping-cart/static/js/main.1674d316.js",
-    "static/media/clothes-hanging2.jpg": "/shopping-cart/static/media/clothes-hanging2.833a503262917e490cac.jpg",
-    "static/media/speed-font.ttf": "/shopping-cart/static/media/speed-font.53bee931b4a502879790.ttf",
-    "static/media/plus.svg": "/shopping-cart/static/media/plus.3e9e7ac9824a66ac31246bde62a9eda7.svg",
-    "static/media/minus.svg": "/shopping-cart/static/media/minus.d3de55eb30700bd0c7f47ac90ff52ea9.svg",
-    "static/media/shopping-cart.svg": "/shopping-cart/static/media/shopping-cart.8e6f9df1b87b85a3f4185cd1717b13a9.svg",
-    "index.html": "/shopping-cart/index.html",
-    "static/media/plus-circle.svg": "/shopping-cart/static/media/plus-circle.a45d691416a0d03680379d3a690588f5.svg",
-    "main.725f574d.css.map": "/shopping-cart/static/css/main.725f574d.css.map",
-    "main.1674d316.js.map": "/shopping-cart/static/js/main.1674d316.js.map"
+    "main.css": "/one-stop/static/css/main.ba6b34d7.css",
+    "main.js": "/one-stop/static/js/main.fd96e319.js",
+    "static/media/clothes-hanging.jpg": "/one-stop/static/media/clothes-hanging.833a503262917e490cac.jpg",
+    "static/media/speed-font.ttf": "/one-stop/static/media/speed-font.53bee931b4a502879790.ttf",
+    "static/media/plus.svg": "/one-stop/static/media/plus.3e9e7ac9824a66ac31246bde62a9eda7.svg",
+    "static/media/minus.svg": "/one-stop/static/media/minus.d3de55eb30700bd0c7f47ac90ff52ea9.svg",
+    "static/media/github-svgrepo-com.svg": "/one-stop/static/media/github-svgrepo-com.bff52115ea27272d600a6bdeb4f5dac8.svg",
+    "static/media/shopping-cart.svg": "/one-stop/static/media/shopping-cart.8e6f9df1b87b85a3f4185cd1717b13a9.svg",
+    "index.html": "/one-stop/index.html",
+    "static/media/plus-circle.svg": "/one-stop/static/media/plus-circle.a45d691416a0d03680379d3a690588f5.svg",
+    "main.ba6b34d7.css.map": "/one-stop/static/css/main.ba6b34d7.css.map",
+    "main.fd96e319.js.map": "/one-stop/static/js/main.fd96e319.js.map"
   },
   "entrypoints": [
-    "static/css/main.725f574d.css",
-    "static/js/main.1674d316.js"
+    "static/css/main.ba6b34d7.css",
+    "static/js/main.fd96e319.js"
   ]
 }
