@@ -41,7 +41,7 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 a:visited {
@@ -340,6 +340,10 @@ header {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.item-title a {
+  color: black;
 }
 
 .item-price {
