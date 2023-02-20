@@ -184,6 +184,7 @@ header {
   overflow-y: auto;
   overflow-x: hidden;
   display: inline-block;
+  color: rgb(31, 30, 30);
 }
 
 .cart-list-item {
