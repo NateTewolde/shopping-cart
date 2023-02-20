@@ -259,6 +259,10 @@ header {
   text-shadow: 1px 1px 4px #303030;
 }
 
+.category a {
+  color: white;
+}
+
 .categories-bar li {
   flex: 1;
   display: flex;
