@@ -11,7 +11,12 @@ const CategoriesBar = ({ categories, currentCategory }) => {
               category === currentCategory ? "current-category" : "category"
             }
           >
-            <Link to={`/one-stop/shop/${category.replace(/\s+/g, "-")}`}>
+            <Link
+              to={`/shopping-cart/one-stop/shop/${category.replace(
+                /\s+/g,
+                "-"
+              )}`}
+            >
               {category
                 .split(" ")
                 .map((word) => word[0].toUpperCase() + word.slice(1))

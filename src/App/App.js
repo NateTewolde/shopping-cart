@@ -69,16 +69,19 @@ const App = () => {
         </header>
 
         <Routes>
-          <Route path="/one-stop" element={<Home />} />
+          <Route path="/shopping-cart/one-stop" element={<Home />} />
           <Route
-            path="/one-stop/shop"
+            path="/shopping-cart/one-stop/shop"
             element={<Shop products={products} categories={categories} />}
           />
           {categories.map((category) => {
             return (
               <Route
                 key={uniqid()}
-                path={`/one-stop/shop/${category.replace(/\s+/g, "-")}`}
+                path={`/shopping-cart/one-stop/shop/${category.replace(
+                  /\s+/g,
+                  "-"
+                )}`}
                 element={
                   <Shop
                     products={products}
@@ -93,7 +96,7 @@ const App = () => {
             return (
               <Route
                 key={uniqid()}
-                path={`/one-stop/shop/${product.category.replace(
+                path={`/shopping-cart/one-stop/shop/${product.category.replace(
                   /\s+/g,
                   "-"
                 )}/${product.title.replace(/\s+/g, "-")}`}

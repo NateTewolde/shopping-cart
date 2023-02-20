@@ -25,7 +25,7 @@ const ItemCard = ({ product }) => {
     <LazyMotion features={domAnimation}>
       <div className="item-card">
         <Link
-          to={`/one-stop/shop/${product.category.replace(
+          to={`/shopping-cart/one-stop/shop/${product.category.replace(
             /\s+/g,
             "-"
           )}/${product.title.replace(/\s+/g, "-")}`}
@@ -48,7 +48,7 @@ const ItemCard = ({ product }) => {
         <div className="item-card-attributes">
           <div className="item-title">
             <Link
-              to={`/one-stop/shop/${product.category.replace(
+              to={`/shopping-cart/one-stop/shop/${product.category.replace(
                 /\s+/g,
                 "-"
               )}/${product.title.replace(/\s+/g, "-")}`}
